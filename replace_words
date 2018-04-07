@@ -1,60 +1,86 @@
 # I, Bartosz Wojcik, 000033686, certify that all code submitted is my own work; that I have not copied it from any other source.  I also certify that I have not allowed my work to be copied by others.
-def replace_words( string, dictionary ):
-    for i, j in dictionary.items():
-        string = string.replace( i, j )
-        pass
+def replace_words(string, replace_dictionary):
 
-    for s in string.split():
-        if s.isdecimal():
-            string = string.replace(s, str(int(s)+1))
+    #if there is punctuation in string
+    #remove the punctuation
+    #store the removed punctunation to be joined at the end
 
+    for char in string:
+        if char in "!.:;'"",.?":
+            string = string.replace (char, "" )
+    '''
+    for i in string:
+        if i.issymbol:
+            replace ( " " )
+    '''
+    string = string.lower ()
+    split_string = string.split()
+    for i, word in enumerate(split_string):
+        if word in replace_dictionary:
+            split_string[i] = replace_dictionary[word.lower()]
+        elif word.isdigit():
+            split_string[i] = str(int(word) + 1)
 
-    return string
+    return " ".join(split_string)
 
 my_dictionary = {
     #zero
-    "null" : "one", "nil" : "one", "zero" : "one","none" : "one"  \
+    "null" : "one",
+    "nil" : "one",
+    "zero" : "one",
+    "none" : "one", 
     #one
-    "one" : "two" , "won" : "two" , "Juan" : "two" , \
+    "one" : "two" ,
+    "won" : "two" ,
+    "Juan" : "two" , 
     #two
-    "two" : "three", "to" : "three", "too" : "three", "tu" : "three", \
+    "two" : "three",
+    "to" : "three",
+    "too" : "three",
+    "tu" : "three", 
     #three
-    "three" : "four", \
+    "three" : "four", 
     #four
-    "four" : "five", "for" : "five", "fore" : "five", \
+    "four" : "five",
+    "for" : "five",
+    "fore" : "five", 
     #five
-    "five" : "six", \
+    "five" : "six", 
     #six
-    "six" : "seven", \
+    "six" : "seven",
     #seven
-    "seven" : "eight", \
+    "seven" : "eight", 
     #eight
-    "eight" : "nine",  "ate" : "nine", \
+    "eight" : "nine",
+    "ate" : "nine", 
     #nine
-    "nine" : "ten", \
+    "nine" : "ten", 
     #ten
-    "ten" : "eleven", \
+    "ten" : "eleven", 
     #eleven
-    "eleven" : "twelve",\
+    "eleven" : "twelve",
     #twelve
-    "twelve" : "thirteen", "dozen" : "thirteen", \
-    "never" : "once", \
-    "half" : "one and a half", \
+    "twelve" : "thirteen",
+    "dozen" : "thirteen", 
+    "never" : "once", 
+    "half" : "one and a half", 
     "once" : "twice",
-    "twice" : "thrice", \
-    "single" : "double", \
-    "double" : "triple", \
-    "first" : "second", \
-    "second" : "third", \
-    "third" : "fourth", \
-    "fourth" : "fifth" , "forth" : "fifth"\
+    "twice" : "thrice", 
+    "single" : "double", 
+    "double" : "triple",
+    "first" : "second", 
+    "second" : "third", 
+    "third" : "fourth", 
+    "fourth" : "fifth" ,
+    "forth" : "fifth"
+    }
 
 
 
-
-my_string = replace_words( "one two three four five six seven eight nine ten eleven twelve", my_dictionary)
+my_string = replace_words( "I wonder. juan 1919191 1919192", my_dictionary)
 
 
 
 
 print(my_string)
+
