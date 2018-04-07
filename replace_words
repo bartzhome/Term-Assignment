@@ -13,7 +13,7 @@ def replace_words(string, replace_dictionary):
         if i.issymbol:
             replace ( " " )
     '''
-    string = string.lower ()
+    
     split_string = string.split()
     for i, word in enumerate(split_string):
         if word in replace_dictionary:
@@ -32,7 +32,7 @@ my_dictionary = {
     #one
     "one" : "two" ,
     "won" : "two" ,
-    "Juan" : "two" , 
+    "juan" : "two" , 
     #two
     "two" : "three",
     "to" : "three",
@@ -77,10 +77,9 @@ my_dictionary = {
 
 
 
-my_string = replace_words( "I wonder. juan 1919191 1919192", my_dictionary)
+my_string = replace_words( "zero one two three four five six seven eight nine ten eleven twelve", my_dictionary)
 
 
 
 
 print(my_string)
-
